@@ -36,7 +36,7 @@ namespace LD.Calculator.LD_CalculatorMultipleBrowsers
                 FrontPage newFrontPage = new FrontPage(driver);
                 newFrontPage.InputNum1Field("-10").InputNum2Field("-20").ClickAdd().AssertTotal("-30");
             }
-            */ // You can't input - (minus sign) into textbox
+            */ // You can't input - (minus sign) into num2 textbox
             [Test]
             public void OddNumbersAdd()
             {
