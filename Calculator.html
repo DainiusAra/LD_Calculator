@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--Solution based on https://codepen.io/mfg888/pen/LYeYdvb-->
+<html>
+<head>
+    <title>LD Calculator</title>
+    <style type="text/css">
+        * {
+            font-family: monospace;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px 0 #b8b8b8;
+            width: 250px;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #0071b3;
+            font-size: 1.8rem;
+            margin: 20px 0;
+        }
+
+        input {
+            width: 150px;
+            height: 40px;
+            border: 1px solid #b8b8b8;
+            border-radius: 10px;
+            margin: 0 0 10px 0;
+            text-align: center;
+        }
+
+        .input {
+            background-color: #0071b3;
+            color: white;
+            margin: 2px;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            width: 30px;
+            height: 30px;
+            transition: 0.4s;
+            box-shadow: 0 0 5px 0 #d6d6d6a1;
+            border: none;
+        }
+
+        .input:focus {
+            transform: scale(1.4);
+            z-index: 2;
+        }
+
+        .buttons {
+            width: 150px;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+    </style>
+    <script type="text/javascript">
+        function addNums() {
+            num1 = parseFloat(document.querySelector("#num1").value);
+            num2 = parseFloat(document.querySelector("#num2").value);
+            result = num1 + num2;
+            document.querySelector("#result").innerHTML = result;
+        }
+
+        function subNums() {
+            num1 = parseFloat(document.querySelector("#num1").value);
+            num2 = parseFloat(document.querySelector("#num2").value);
+            result = num1 - num2;
+            document.querySelector("#result").innerHTML = result;
+        }
+
+        function mulNums() {
+            num1 = parseFloat(document.querySelector("#num1").value);
+            num2 = parseFloat(document.querySelector("#num2").value);
+            result = num1 * num2;
+            document.querySelector("#result").innerHTML = result;
+        }
+
+        function divNums() {
+            num1 = parseFloat(document.querySelector("#num1").value);
+            num2 = parseFloat(document.querySelector("#num2").value);
+            result = num1 / num2;
+            document.querySelector("#result").innerHTML = result;
+        }
+        function isChrome() {
+            return navigator.userAgent.indexOf("Chrome") !== -1
+        }
+    </script>
+</head>
+<body>
+
+<form style="padding: 16px">
+    <img src='data:image/webp;base64,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'/>
+    <h1 style="color: #b40084">Calculator</h1>
+    <input id="num1" name="num1" required>
+
+    <input id="num2" type="number"  name="num2" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" required>
+
+    <div class="buttons">
+        <input style="background: #cd0084" type="button" onclick="addNums()" class="input" id="add" name="op" value="+">
+        <input style="background: #cd0084" type="button" onclick="subNums()" class="input" id="subtract" name="op" value="-">
+        <input style="background: #cd0084" type="button" onclick="mulNums()" class="input" id="multiply" name="op" value="*">
+        <input style="background: #cd0084" type="button" onclick="divNums()" class="input" id="divide" name="op" value="/">
+    </div>
+    <h2 id="result"></h2>
+    <footer>
+        <div style="padding-bottom: 8px">Designed by</div>
+        <img src='data:image/jpeg;base64,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'/>
+    </footer>
+    <script type="text/javascript">
+        if (!isChrome()) {
+            document.querySelector('#num1').style.display = 'none'
+        }
+    </script>
+</form>
+</body>
+</html>
