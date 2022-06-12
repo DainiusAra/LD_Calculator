@@ -1,4 +1,6 @@
 ﻿
+using System.Globalization;
+
 namespace LD_Calculator.LD_CalculatorMultipleBrowsers
 {
     public class FrontPage : BasePage
@@ -7,10 +9,12 @@ namespace LD_Calculator.LD_CalculatorMultipleBrowsers
 
         private IWebElement InputNum1FieldElement => webDriver.FindElement(By.Id("num1"));
         private IWebElement InputNum2FieldElement => webDriver.FindElement(By.Id("num2"));
+        private IWebElement InputNum2FieldIntElement => webDriver.FindElement(By.Id("num2"));
         private IWebElement ClickAddElement => webDriver.FindElement(By.Id("add"));
         private IWebElement ClickSubtractElement => webDriver.FindElement(By.Id("subtract"));
         private IWebElement ClickMultiplyElement => webDriver.FindElement(By.Id("multiply"));
         private IWebElement ClickDivideElement => webDriver.FindElement(By.Id("divide"));
+
         private IWebElement CheckResultElement => webDriver.FindElement(By.Id("result"));
 
         public FrontPage InputNum1Field(string number1)
@@ -45,8 +49,10 @@ namespace LD_Calculator.LD_CalculatorMultipleBrowsers
         }
         public FrontPage AssertTotal(string total)
         {
+            //Math.Round(Convert.ToDecimal(total), 2);
             Assert.AreEqual(total, CheckResultElement.Text);
             return this;
         }
+
     }
 }
