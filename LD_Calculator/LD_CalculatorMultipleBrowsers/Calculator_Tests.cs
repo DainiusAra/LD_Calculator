@@ -360,6 +360,19 @@ namespace LD.Calculator.LD_CalculatorMultipleBrowsers
                 FrontPage newFrontPage = new FrontPage(driver);
                 newFrontPage.InputNum1Field("-15").InputNum2Field("10").ClickDivide().AssertTotal("-1.5");
             }
+            [Test]
+            public void AddZerosInFront()
+            {
+                FrontPage newFrontPage = new FrontPage(driver);
+                newFrontPage.InputNum1Field("0015").InputNum2Field("0010").ClickAdd().AssertTotal("NaN");
+                // This should fail because 00 should't be allowed in front of the numbers
+            }
+            public void AddLettersInNum1Field()
+            {
+                FrontPage newFrontPage = new FrontPage(driver);
+                newFrontPage.InputNum1Field("A").InputNum2Field("2").ClickAdd().AssertTotal("NaN");
+                // This should fail because it shouldn'e be allowed
+            }
             [TearDown]
             public void TearDown()
             {

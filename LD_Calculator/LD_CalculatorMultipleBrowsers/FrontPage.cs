@@ -53,6 +53,5 @@ namespace LD_Calculator.LD_CalculatorMultipleBrowsers
             Assert.AreEqual(total, CheckResultElement.Text);
             return this;
         }
-
     }
 }
