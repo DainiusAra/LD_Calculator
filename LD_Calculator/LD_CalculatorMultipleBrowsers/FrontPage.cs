@@ -9,7 +9,6 @@ namespace LD_Calculator.LD_CalculatorMultipleBrowsers
 
         private IWebElement InputNum1FieldElement => webDriver.FindElement(By.Id("num1"));
         private IWebElement InputNum2FieldElement => webDriver.FindElement(By.Id("num2"));
-        private IWebElement InputNum2FieldIntElement => webDriver.FindElement(By.Id("num2"));
         private IWebElement ClickAddElement => webDriver.FindElement(By.Id("add"));
         private IWebElement ClickSubtractElement => webDriver.FindElement(By.Id("subtract"));
         private IWebElement ClickMultiplyElement => webDriver.FindElement(By.Id("multiply"));
@@ -25,6 +24,16 @@ namespace LD_Calculator.LD_CalculatorMultipleBrowsers
         public FrontPage InputNum2Field(string number2)
         {
             InputNum2FieldElement.SendKeys(number2);
+            return new FrontPage(webDriver);
+        }
+        public FrontPage InputNum1FieldDouble(double number1)
+        {
+            InputNum1FieldElement.SendKeys(number1.ToString());
+            return new FrontPage(webDriver);
+        }
+        public FrontPage InputNum2FieldDouble(double number2)
+        {
+            InputNum2FieldElement.SendKeys(number2.ToString());
             return new FrontPage(webDriver);
         }
         public FrontPage ClickAdd()
@@ -51,6 +60,13 @@ namespace LD_Calculator.LD_CalculatorMultipleBrowsers
         {
             //Math.Round(Convert.ToDecimal(total), 2);
             Assert.AreEqual(total, CheckResultElement.Text);
+            return this;
+        }
+        public FrontPage AssertTotalDouble(double total2)
+        {
+            var doubledCheckResultElement = Convert.ToDouble(CheckResultElement.Text);
+            Math.Round(doubledCheckResultElement, 2);
+            Assert.AreEqual(total2.ToString(), doubledCheckResultElement.ToString());
             return this;
         }
     }
